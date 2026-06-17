@@ -1,33 +1,29 @@
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>SDG 3 Mental Health Portal</title>
-    <link rel="stylesheet" href="{% static 'portal/style.css' %}">
-</head>
+<link rel="stylesheet" href="{% static 'portal/style.css' %}">
 <body>
 
 <nav>
     <a href="/">Home</a>
     <a href="/about/">About</a>
-    <a href="/form/">Form</a>
+    <a href="/register/">Register</a>
 </nav>
 
-<div class="container">
+<h1> Registration Form </h1>
 
-    <div class="card">
+<p> Register your interest below. </p>
 
-        <h1>Mental Health Awareness Portal</h1>
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
 
-        <p>
-            Welcome to our SDG 3 awareness portal.
-        </p>
+<form method="POST">
+    {% csrf_token %}
 
-    </div>
+    {{ form.as_p }}
 
-</div>
+    <button type="submit">Submit</button>
+</form>
 
 </body>
 
 <footer></footer>
-</html>
